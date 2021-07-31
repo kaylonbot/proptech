@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<head>
+   <!-- Latest compiled and minified CSS -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+   <title>AutoHome AI Pro</title>
+</head>
+
+<style>
+   body{
+ background-color: rgb(25, 25, 27);
+ color: white;
+ padding-left: 15px;
+ padding-right: 15px;
+}
+
+.page-header{
+ color: white;
+ font-family:Arial, Helvetica, sans-serif;
+ text-align: center;
+ padding: 0%;
+ letter-spacing: 5px;
+}
+.active a{
+ color: yellow !important;
+}
+
+.main-content{
+ padding: 15px;
+ padding-top: 25px;
+}
+.navbar{
+ background-color:black!important;
+
+}
+
+
+.table-img{
+ background-repeat: no-repeat;
+ background-image: url("#");  /* Background Image for Forms*/
+ background-blend-mode: lighten;
+ background-attachment: fixed;
+ background-size: 100% 100%;
+ justify-content: center;
+}
+
+.table-style{
+ margin: 0 auto;
+ width: 60%;
+}
+
+label{
+ font-size: 20px;
+ font-weight: bold;
+}
+
+
+#footer{
+ position: fixed;
+ bottom: 0;
+ left: 0;
+ width: 100%;
+ background-color:black ;
+ color: white;
+ text-align: center;
+}
+
+.table-style thead{
+ background-color: black;
+}
+
+.table-style th,td{
+ padding: 10px;
+ text-align: center;
+}
+
+.table-style th{
+ font-size: 20px;
+}
+
+.table-style td{
+ font-size: 18px;
+}
+
+.table-style td a{
+ color: white;
+}
+table.table-style{
+ overflow-x: visible;
+}
+.jumbotron{
+   background-color: rgb(25, 25, 27);
+   width: 100%;
+   text-align: center;
+}
+ .form-img{
+   background-repeat: no-repeat;
+   background-image: url("#");  /* Background Image for Forms*/
+   background-blend-mode: lighten;
+   background-attachment: fixed;
+   /* border:1px solid; */
+   background-size: 100% 100%;
+ }
+
+ .form-style{
+   margin: 0 auto;
+   width: 60%;
+ }
+</style>
+<body>
+<div class="row sticky-top" style="background-color: black;">
+<div class="col-md-5">
+ <h4 class="page-header">AutoHome AI Pro</h4>
+</div>
+<div class="col-md-7">
+ <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+     <ul class="navbar-nav ml-auto">
+       <li class="nav-item active">
+         <a class="nav-link" href="/"> Add Device</a>
+       </li>
+       <li class="nav-item ">
+         <a class="nav-link" href="/"> Devices</a>
+       </li>
+     </ul>
+ </nav>
+</div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<center>
+   <div class="col-md-7 form-img"> 
+   <table class="table" style="color: grey;">
+      <tr><th scope="col">Devices</th> <th scope="col">Action</th></tr>
+{% for pin in pins %}
+{% if pins[pin].state == 'True' %}
+<td scope="row">{{pins[pin].name}}</td>
+<td>
+<a href="/{{pins[pin].topic}}/0" class="btn btn-block btn-lg btn-default" style="background-color: red;">Turn off</a></td>
+{% else %}
+<td scope="row">{{pins[pin].name}}</td>
+<td> 
+<a  href="/{{pins[pin].topic}}/1" class="btn btn-block btn-lg btn-default"style="background-color: green;  ">Turn On</a></td>
+{% endif %}
+</tr>
+{% endfor %}
+</table>
+
+</div>
+</center>
+</body>
+</html>
